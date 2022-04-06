@@ -1,7 +1,16 @@
-# Vue 3 + Vite
+# COLORS PROJECT 
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project is a part of INT203 Client-side Web Programming II Term 2 year of education 2.
 
-## Recommended IDE Setup
+### This project made by
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+| No  | Student Id  | Student Name         |
+| --- | ----------- | ------------------   |
+| 1.  | 63130500062 | Theerut Thankan      |
+| 2.  | 63130500069 | Nuttawat Rodsomboon  |
+| 3.  | 63130500074 | Buratsakorn Boonma   |
+| 4.  | 63130500096 | Manassinee Vejvithan |
+| 5.  | 63130500100 | Rawis Noiwong        |
+
+### ABOUT THE PROJECT
+#### ABOUT COLORS! :
