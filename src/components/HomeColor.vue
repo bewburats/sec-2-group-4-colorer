@@ -3,7 +3,7 @@
 </script>
  
 <template>
-
+<!-- 
       <div class="divide-y divide-gray-300/50">
        
         <div class="grid grid-cols-2 gap-4 space-y-6 py-8 text-gray-900">
@@ -23,10 +23,10 @@
             >Explore !</button>
           </div>
           <div>
-            <!-- <img src="../assets/logo-color.png" alt="colorcover" /> -->
+             <img src="../assets/logo-color.png" alt="colorcover" /> 
           </div>
         </div>
-      </div>
+     </div> -->
 
 </template>
  
