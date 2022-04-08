@@ -19,4 +19,14 @@ import Navbar from './components/Navbar.vue';
 </template>
  
 <style>
+@import url("https://fonts.googleapis.com/css?family=Rubik");
+
+html,
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+#app {
+  font-family: "Rubik", sans-serif;
+}
 </style>

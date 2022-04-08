@@ -1,10 +1,8 @@
 <script setup>
-import HomeColorVue from '../components/HomeColor.vue';
 import ButtonColor from '../components/ButtonColor.vue';
 </script>
  
 <template>
-<!-- <HomeColorVue /> -->
 
  <div class="divide-y divide-gray-300/50">
        
@@ -15,13 +13,10 @@ import ButtonColor from '../components/ButtonColor.vue';
               Create the perfect palette or get
               <br />inspired by much of beautiful color schemes.
             </p>
-            <ButtonColor name ="test"/>
-            <ButtonColor name ="อิอิ"/>
-          
-
+            <ButtonColor name ="Generate !"/>
+            <ButtonColor name ="Explore !"/>
           </div>
           <div>
-            
           </div>
         </div>
       </div>
