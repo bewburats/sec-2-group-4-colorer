@@ -152,15 +152,16 @@ function setLastPlay() {
 <template>
   <div
     id="back"
-    class="min-h-screen w-screen w-100 bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12"
+    class="px-8 w-fit w-100  py-6 flex flex-col justify-center relative overflow-hidden sm:rounded sm:py-12"
     :style="{ 'background-color': bgColor }"
   >
     <div
-      class="dark:bg-slate-800 dark:text-white md:w-96 md:h-auto relative px-6 pt-10 pb-8 bg-white shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg sm:mx-auto sm:rounded-lg sm:px-10"
+      class="px-8 dark:bg-slate-800/50 dark:text-white md:w-96 md:h-auto relative px-6 pt-10 pb-8 bg-white/50 sm:max-w-lg sm:rounded sm:mx-auto  sm:px-10"
     >
       <div class="max-w-md mx-auto">
         <div class="flex justify-between">
-          <div class="h-6 font-medium text-xl" :style="{ 'color': colorWordHead }">🎨 C O L O R S</div>
+          <p>Guess {{ colorWord }} !</p>
+          <!-- <div class="h-6 font-medium text-xl" :style="{ 'color': colorWordHead }">🎨 C O L O R S</div> -->
           <div div class="flex justify-end">
             <button type="button" data-modal-toggle="color">
               <svg
@@ -198,7 +199,7 @@ function setLastPlay() {
         <hr />
         <div class="divide-y divide-gray-300/50">
           <div class="dark:text-white py-8 text-base leading-7 space-y-6 text-gray-600">
-            <p>Guess {{ colorWord }} !</p>
+            <!-- <p>Guess {{ colorWord }} !</p> -->
             <div class="grid grid-flow-col auto-cols-max">
               <div class="relative z-0 mb-6 w-full group md:w-auto">
                 <input
@@ -225,7 +226,7 @@ function setLastPlay() {
               <div
                 v-show="isCorrect"
                 id="toast-success"
-                class="flex items-center text-gray-500 bg-white rounded-lg dark:text-gray-400 dark:bg-gray-800"
+                class="flex items-center text-gray-500 rounded-lg dark:text-gray-400 "
                 role="alert"
               >
                 <svg
@@ -245,7 +246,7 @@ function setLastPlay() {
               <div
                 v-show="isShowAnswer"
                 id="toast-success"
-                class="flex items-center text-gray-500 bg-white rounded-lg dark:text-gray-400 dark:bg-gray-800"
+                class="flex items-center text-gray-500 rounded-lg dark:text-gray-400 dark:bg-gray-800"
                 role="alert"
               >
                 <svg

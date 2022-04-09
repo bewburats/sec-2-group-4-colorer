@@ -15,7 +15,7 @@ import ButtonColor from '../components/ButtonColor.vue';
         <ButtonColor name="Explore !"  link="ExploreColor"/>
       </div>
       <div>
-        <img class="w-24 h-24 md:w-48 md:h-auto  mx-auto" src="../assets/homecolor.png" alt="" width="384" height="512">
+        <img class="object-contain w-24 h-24 md:w-48 md:h-auto  mx-auto" src="../assets/homecolor.png" alt="" width="384" height="512">
   <!-- <div class="pt-6 md:p-8 text-center md:text-left space-y-4"> -->
         <!-- <img src="../assets/proj1.png" alt=""> -->
         <!-- รูปจากน้องกัส -->

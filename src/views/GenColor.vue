@@ -10,16 +10,18 @@ const addColorToList = ()=> {
 }
 </script>
  
-<template>
-    <div class="grid grid-cols-3 gap-4 space-y-6 py-8 text-gray-900">
-        <div>
-            <h1
-                class="font-extrabold leading-tight text-xl mt-0 mb-2 dark:text-white"
+<template><h1
+                class="font-extrabold leading-tight text-xl dark:text-white"
             >Generate your color</h1>
-            <div class="font-medium leading-8 mt-0 mb-5 dark:text-white">
-                input color:
-                <input type="color" v-model="color" />
-                {{ color }}
+    <div class="grid grid-cols-3 gap-4 space-y-6 py-2 text-gray-900">
+        <div>
+            <br>Choose color:
+            <div id="containInputColor" class="font-medium leading-8 mt-0 mb-5 dark:text-white">
+                
+                <input id="inputColor" type="color" v-model="color" />
+                <input type="text" v-model="color" > 
+                 <!-- {{ color }} -->
+              
             </div>
             <button @click="addColorToList">add</button>
         </div>
@@ -45,4 +47,21 @@ const addColorToList = ()=> {
 .hr-outside{
     text-align: center;
 }
+#containInputColor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+#inputColor{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
 </style>
