@@ -24,5 +24,16 @@
       "id": 6,
       "colorPalettes": ["#1a1423", "#372549", "#774c60", "#b75d69", "#eacdc2"]
     }
+  ] ,
+
+  "colorsUser": [
+    {
+      "id": 1,
+      "colorPalettes": ["#d8e2dc", "#ffe5d9", "#ffcad4", "#f4acb7", "#9d8189"]
+    }
   ]
+
+
+
+
 }
