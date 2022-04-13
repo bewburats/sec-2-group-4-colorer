@@ -17,8 +17,8 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="text-center">
-    <p class="text-2xl">Trending Color Palettes</p>
+  <div class="text-center dark:text-white">
+    <p class="text-2xl ">Trending Color Palettes</p>
     <p>
       Get inspired by thousands of beatiful color schemes and make something
       cool!

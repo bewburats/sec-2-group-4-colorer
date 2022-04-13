@@ -13,18 +13,21 @@ const newGenColor = computed(() => {
     console.log({ id: props.currentGenColor.id, colorPalettes: props.currentGenColor.colorPalettes });
     return { id: props.currentGenColor.id, colorPalettes: props.currentGenColor.colorPalettes }
 })
+// const color = ref('#000000');
 console.log(newGenColor.value);
 </script>
  
 <template>
-    <div>
+<div>
+    <!-- <div v-for="(color, index) in currentGenColor" :key="index"> -->
         <div id="containInputColor" class="font-medium leading-8 mt-0 mb-5 dark:text-white">
-            <input id="inputColor" type="color" v-model="color" />
-            <input type="text" v-model="color" />
+            <input id="inputColor" type="color" v-model="newGenColor.colorPalettes" />
+            <input type="text" v-model="newGenColor.colorPalettes" />
         </div>
         <button v-if="newGenColor.id > 0" @click="$emit('updateColor', newGenColor)">Update</button>
         <button v-else @click="$emit('addColor', newGenColor.colorPalettes)">Add</button>
-    </div>
+    <!-- </div> -->
+</div>
 </template>
  
 <style>

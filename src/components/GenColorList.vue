@@ -25,18 +25,28 @@ const getColorFromDb = async (colorId) => {
 onBeforeMount(async () => {
   if (route.query.colorExploreId) {
     await getColorFromDb(route.query.colorExploreId);
+  } else {
+    await getColorFromDb(1);
   }
 });
 </script>
 
 <template>
+
   <div v-for="(color, index) in colorList" :key="index">
-    <div v-bind:style="{ 'background-color': color }">&nbsp;</div>
-    <button @click="$emit('editColor', color)">Edit</button>
-    <button @click="$emit('deleteColor', color.id)">Delete</button>
-    <!-- <button @click="addColorToList(index)">edit</button> &nbsp;
+    <div>
+      <div v-bind:style="{ 'background-color': color }" class="box-content h-20 w-20 p-4">&nbsp;</div>
+      <br><button type="button"
+        class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
+        @click="$emit('editColor', color)">Edit</button>
+      <button type="button"
+        class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
+        @click="$emit('deleteColor', color.id)">Delete</button>
+      <!-- <button @click="addColorToList(index)">edit</button> &nbsp;
         <button @click="deleteColorList(index)">delete</button>-->
+    </div>
   </div>
 </template>
 
-<style></style>
+<style>
+</style>

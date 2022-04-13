@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import GenColor from "../src/views/GenColor.vue";
 import ExploreColor from "../src/views/ExploreColor.vue";
 import GameColor from "../src/views/GameColor.vue";
-import Home from "../src/views/Home.vue"
-
+import Home from "../src/views/Home.vue";
+import Profile from "../src/views/ProfileColor.vue";
 const history = createWebHistory();
 const routes = [
   {
@@ -22,6 +22,10 @@ const routes = [
     path: "/gamecolor",
     name: "GameColor",
     component: GameColor,
+  },{
+    path: "/profilecolor",
+    name: "ProfileColor",
+    component: Profile,
   }
 //   ,
 //   {
