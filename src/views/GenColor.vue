@@ -49,21 +49,14 @@ import GenColorList from '../components/GenColorList.vue'
     text-align: center;
 }
 
-#containInputColor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
 #inputColor {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
-    border-radius: 15px;
-    background-color: transparent;
-    height: 50px;
-    width: 50px;
+    /* border-radius: 15px; */
+    /* background-color: transparent; */
+    height: 70px;
+    width: 70px;
     cursor: pointer;
 }
 </style>

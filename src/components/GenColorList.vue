@@ -68,25 +68,26 @@ const savetoProfile = () => { }
 
 <template>
   <div>
-    <h1 class="font-extrabold leading-tight text-xl dark:text-white">Generate your color</h1>
-    <div class="grid grid-cols-2 gap-1 space-y-6 py- text-gray-900">
-
+    <h1 class="text-center text-2xl dark:text-white">Generate your color</h1>
+    <div class="grid grid-cols-2 gap-1 space-y-6 text-gray-900 dark:text-white">
+      
       <div>
-        <br />Choose color:
-        <div id="containInputColor" class="font-medium leading-8 mt-0 mb-5 dark:text-white">
-          <input id="inputColor" type="color" v-model="color" />
-          <input type="text" v-model="color" placeholder="input color" />
+        <br ><p class="font-extrabold  text-gray-700 text-xl dark:text-white">choose your color</p>
+        
+        <br>
+        <div class="flex flex-row gap-2 font-medium mt-0 mb-5 dark:text-white">
+          <input id="inputColor" class="" type="color" v-model="color" />
+          <input type="text" class="text-black" v-model="color" placeholder="input color" />
         </div>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="addColorToList(7)" v-if="AddisDisabled" :disabled="disAdd">add</button>
-          <button
+        <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="saveColorList" v-if="SaveisDisabled">update</button>
-          <button
+        <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="savetoProfile(index)">save to profile</button>
-      
       </div>
 
       <!-- <div class="hr-outside">
@@ -95,7 +96,8 @@ const savetoProfile = () => { }
       <div class="grid grid-cols-3 gap-1">
         <div v-for="(color, index) in colorLists" :key="index">
           <div>
-            <div v-bind:style="{ 'background-color': color }" class="box-content h-20 w-20 p-4 border border-inherit"></div>
+            <div v-bind:style="{ 'background-color': color }" class="box-content h-20 w-20 p-4 border border-inherit">
+            </div>
             <button
               class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
               @click="addColorToList(index)">edit</button>
