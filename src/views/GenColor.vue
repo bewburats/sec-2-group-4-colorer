@@ -73,6 +73,7 @@ const saveColorList = () => {
                 <button @click="deleteColorList(index)">delete</button>
             </div>-->
         <!-- </div> -->
+        
     <!-- </div> -->
 </template>
 <style>
