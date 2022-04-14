@@ -3,12 +3,7 @@ import { onBeforeMount, ref } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 const route = useRoute();
 defineEmits(["deleteColor", "editColor"]);
-const props = defineProps({
-  colorList: {
-    type: Array,
-    require: true,
-  },
-});
+
 const colorLists = ref([]);
 
 const getColorFromDb = async (colorId) => {
@@ -51,6 +46,7 @@ const addColorToList = (index) => {
     AddisDisabled.value = false  //ซ่อนปุ่มadd เมื่อกด edit
     SaveisDisabled.value = true  //แสดงปุ่ม save เมื่อกด edit
   }
+
 }
 
 //ลบสีออกจาก list 
@@ -61,12 +57,12 @@ const deleteColorList = (index) => {
 //กดเซฟหลังจาก edit --> เลือกสีใหม่
 const saveColorList = () => {
   colorLists.value[currentColor.value] = color.value //แก้ไขอันเลย์
-  color.value = ""   //เปลี่ยนสีที่โชว์ให้เป็นสีดำ เพื่อให้ยูสเชอร์เข้าใจว่าเปลี่ยแล้ว
+  color.value = " "   //เปลี่ยนสีที่โชว์ให้เป็นสีดำ เพื่อให้ยูสเชอร์เข้าใจว่าเปลี่ยแล้ว
   AddisDisabled.value = true  //หลังจากเซฟเสร็จ ก็เปิดปุ่ม add ให้แสดง
   SaveisDisabled.value = false //หลังจากเซฟเสร็จ ก็ซ่อนปุ่มเซฟ
 }
 
-const savetoProfile = () => {}
+const savetoProfile = () => { }
 
 </script>
 
@@ -83,29 +79,29 @@ const savetoProfile = () => {}
         </div>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
-          @click="addColorToList(7)" v-if="AddisDisabled" >add</button>
-        <button
-          class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
-          @click="savetoProfile(index)">save to profile</button>
-        <button
+          @click="addColorToList(7)" v-if="AddisDisabled" :disabled="disAdd">add</button>
+          <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="saveColorList" v-if="SaveisDisabled">update</button>
+          <button
+          class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
+          @click="savetoProfile(index)">save to profile</button>
+      
       </div>
 
       <!-- <div class="hr-outside">
         <div class="hr-inside"></div>
       </div> -->
-      <div class="grid grid-cols-5">
+      <div class="grid grid-cols-3 gap-1">
         <div v-for="(color, index) in colorLists" :key="index">
           <div>
-            <div v-bind:style="{ 'background-color': color }" class="box-content h-20 w-20 p-4"></div>
+            <div v-bind:style="{ 'background-color': color }" class="box-content h-20 w-20 p-4 border border-inherit"></div>
             <button
               class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
-              @click="addColorToList(index)">edit</button> &nbsp;
+              @click="addColorToList(index)">edit</button>
             <button
               class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
               @click="deleteColorList(index)">delete</button>
-
           </div>
         </div>
 
