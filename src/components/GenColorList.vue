@@ -62,7 +62,6 @@ const saveColorList = () => {
   SaveisDisabled.value = false //หลังจากเซฟเสร็จ ก็ซ่อนปุ่มเซฟ
 }
 
-const savetoProfile = () => { }
 
 </script>
 
@@ -90,9 +89,6 @@ const savetoProfile = () => { }
           @click="savetoProfile(index)">save to profile</button>
       </div>
 
-      <!-- <div class="hr-outside">
-        <div class="hr-inside"></div>
-      </div> -->
       <div class="grid grid-cols-3 gap-1">
         <div v-for="(color, index) in colorLists" :key="index">
           <div>
