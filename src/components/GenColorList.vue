@@ -1,8 +1,9 @@
 <script setup>
 import { onBeforeMount, ref } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
+import SavetoProfile from "./SavetoProfile.vue";
 const route = useRoute();
-defineEmits(["deleteColor", "editColor"]);
+
 
 const colorLists = ref([]);
 
@@ -25,7 +26,7 @@ onBeforeMount(async () => {
   }
 });
 
-const color = ref("#007770");  //สีเริ่มต้นที่โชว์ให้ยูสเชอร์เห็น
+const color = ref("#000000");  //สีเริ่มต้นที่โชว์ให้ยูสเชอร์เห็น
 
 const AddisDisabled = ref(true)  //การแสดงผลของปุ่ม add
 const SaveisDisabled = ref(false) //การแสดงผลของปุ่ม save
@@ -62,6 +63,23 @@ const saveColorList = () => {
   SaveisDisabled.value = false //หลังจากเซฟเสร็จ ก็ซ่อนปุ่มเซฟ
 }
 
+const savetoProfile = async (newSaveColor) => {
+    const res = await fetch('http://localhost:5000/savedColors', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({ savedPalettes: newSaveColor })
+    })
+    if (res.status === 201) {
+        const savedPalette = await res.json()
+         console.log(savedPalette);
+        // colorLists.value.push(savedPalette)
+        console.log(savedPalette);
+        console.log(colorLists.value);
+        console.log('saved successfully')
+    } else { console.log(`cannot save`); }
+} 
 
 </script>
 
@@ -76,7 +94,7 @@ const saveColorList = () => {
         <br>
         <div class="flex flex-row gap-2 font-medium mt-0 mb-5 dark:text-white">
           <input id="inputColor" class="" type="color" v-model="color" />
-          <input type="text" class="text-black" v-model="color" placeholder="input color" />
+          <input type="text"  v-model="color" placeholder="input color" />
         </div>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
@@ -84,11 +102,12 @@ const saveColorList = () => {
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="saveColorList" v-if="SaveisDisabled">update</button>
-        <button
-          class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
-          @click="savetoProfile(index)">save to profile</button>
+          <SavetoProfile :savedColorList="colorLists" @savedColor="savetoProfile" /> 
       </div>
 
+      <!-- <div class="hr-outside">
+        <div class="hr-inside"></div>
+      </div> -->
       <div class="grid grid-cols-3 gap-1">
         <div v-for="(color, index) in colorLists" :key="index">
           <div>

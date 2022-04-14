@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref,computed } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -16,16 +16,13 @@ const props = defineProps({
 //         query: { colorExploreId: colorExploreId },
 //     });
 // };
-const newSaveColor = computed(() => {
-    console.log({ id: props.savedColorList.id, savedPalettes: props.savedColorList.savedPalettes });
-    return { id: props.savedColorList.id, savedPalettes: props.savedColorList.savedPalettes }
-})
 
 </script>
- 
+
+
 <template>
     <div>
-        <button @click="$emit('savedColor', newSaveColor)">Save Color</button>
+        <button @click="$emit('savedColor', savedColorList)">Save Color</button>
     </div>
 </template>
  
