@@ -74,7 +74,6 @@ const savetoProfile = async (newSaveColor) => {
     if (res.status === 201) {
         const savedPalette = await res.json()
          console.log(savedPalette);
-        // colorLists.value.push(savedPalette)
         console.log(savedPalette);
         console.log(colorLists.value);
         console.log('saved successfully')
