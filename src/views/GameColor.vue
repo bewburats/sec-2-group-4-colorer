@@ -254,7 +254,8 @@ function setLastPlay() {
       </div>
       <div
         class="px-8 dark:bg-slate-800/50 dark:text-white md:w-auto md:h-auto relative px-6 pt-10 pb-8 bg-white/50 sm:max-w-lg sm:rounded sm:mx-auto  sm:px-10">
-        <div class="text-xs font-semibold text-black lg:text-2xl dark:text-white">How To Play!
+        <div class="text-2xl font-semibold dark:text-white">How To Play!</div>
+        <div class="text-xs text-black dark:text-white">
           <p class="text-base leading-relaxed text-black dark:text-white">
             <b>🎨 Description:</b>
             <br />Guess the COLORS ! . If you are correct you got a point if not point will deduct.
@@ -266,6 +267,7 @@ function setLastPlay() {
             <br />2. If the player guesses wrong 3 times, there will be a hint. is the number of characters of that
             color
             <br />3. You will get the scores when guessing correctly.
+            <br>
             <b>Notice !</b> You can guess it for 5 times .
           </p>
         </div>
