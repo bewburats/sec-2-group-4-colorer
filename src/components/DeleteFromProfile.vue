@@ -1,36 +1,35 @@
 <script setup>
-import DeleteFromProfile from '../components/DeleteFromProfile.vue';
-// import { onBeforeMount, ref } from "vue";
-// const showSaveColors = ref([]);
-// //get Data
-// const getSaveColors = async () => {
-//     const res = await fetch('http://localhost:5000/savedColors')
-//     if (res.status === 200) {
-//         showSaveColors.value = await res.json()
-//         console.log(showSaveColors.value)
-//     } else {
-//         console.log("not get saveColors")
-//     }
-// }
-// onBeforeMount(async () => {
-//     await getSaveColors()
-// })
+import { onBeforeMount, ref } from "vue";
+const showSaveColors = ref([]);
+//get Data
+const getSaveColors = async () => {
+    const res = await fetch('http://localhost:5000/savedColors')
+    if (res.status === 200) {
+        showSaveColors.value = await res.json()
+        console.log(showSaveColors.value)
+    } else {
+        console.log("not get saveColors")
+    }
+}
+onBeforeMount(async () => {
+    await getSaveColors()
+})
 
-// //delete data
-// const removeColorSave = async (removeSaveColorId) => {
-//   const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
-//     method: 'DELETE'
-//   })
-//   if (res.status === 200) {
-//     showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
-//     console.log('deleted');
-//   }
-//   else console.log('error,cannot delete');
-// }
+//delete data
+const removeColorSave = async (removeSaveColorId) => {
+  const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
+    method: 'DELETE'
+  })
+  if (res.status === 200) {
+    showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
+    console.log('deleted');
+  }
+  else console.log('error,cannot delete');
+}
 </script>
-
+ 
 <template>
-    <!-- <div>
+    <div>
         <div class="text-center dark:text-white">
             <p class="text-2xl ">Your Color Palettes</p>
             <div class="grid grid-cols-3 gap-6">
@@ -47,17 +46,17 @@ import DeleteFromProfile from '../components/DeleteFromProfile.vue';
                             </div>
 
                         </div>
-                    </div> -->
+                    </div>
                     <!-- น่าจะต้องสร้าง component ใหม่มั่ง  -->
-                    <!-- <button @click="removeColorSave(showSaveColor.id)"
+                    <button @click="removeColorSave(showSaveColor.id)"
                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Delete</button>
                 </div>
             </div>
         </div>
-    </div> -->
-    <DeleteFromProfile />
+    </div>
 </template>
-
+ 
 <style>
+
 </style>
