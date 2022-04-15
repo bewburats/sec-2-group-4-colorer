@@ -48,7 +48,7 @@ const removeColorSave = async (removeSaveColorId) => {
                         </div>
                     </div>
                     <!-- น่าจะต้องสร้าง component ใหม่มั่ง  -->
-                    <button @click="removeColorSave(1)"
+                    <button @click="removeColorSave(showSaveColor.id)"
                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Delete</button>
                 </div>
