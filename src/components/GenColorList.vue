@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref } from "@vue/runtime-core";
+import { onBeforeMount, ref , onBeforeUpdate} from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import SavetoProfile from "./SavetoProfile.vue";
 const route = useRoute();
@@ -24,13 +24,17 @@ onBeforeMount(async () => {
   } else {
     await getColorFromDb(1);
   }
+  CheckForUpdateToProfile()
 });
 
 const color = ref("#000000");  //สีเริ่มต้นที่โชว์ให้ยูสเชอร์เห็น
 
 const AddisDisabled = ref(true)  //การแสดงผลของปุ่ม add
 const SaveisDisabled = ref(false) //การแสดงผลของปุ่ม save
+const SaveToProfileDisabled = ref(false)
 const currentColor = ref(0); //เอาไว้เซฟตำแหน่งที่เลือก edit 
+
+
 
 //add และ edit  โดยในปุ่ม add จะส่ง index=7 ส่วน editจะส่ง index= 1-6 (เรากำหนดไม่ให้มีสีเกิน6อันในพาเหลด)
 const addColorToList = (index) => {
@@ -39,6 +43,9 @@ const addColorToList = (index) => {
   if (colorLists.value.length < 5 && index == 7) {
     colorLists.value.push(color.value)
     console.log(colorLists.value)
+ 
+    CheckForUpdateToProfile()
+  
   }
   //เช็คว่าถ้ากดปุ่ม edit มา ก็จะทำงานส่วนนี้แทน
   if (index < 7) {
@@ -46,13 +53,22 @@ const addColorToList = (index) => {
     currentColor.value = index  //เซฟตำแหน่ง index ที่เลือก edit 
     AddisDisabled.value = false  //ซ่อนปุ่มadd เมื่อกด edit
     SaveisDisabled.value = true  //แสดงปุ่ม save เมื่อกด edit
+    SaveToProfileDisabled.value = false
   }
+
+  
 
 }
 
 //ลบสีออกจาก list 
 const deleteColorList = (index) => {
-  colorLists.value.splice(index, 1);
+ 
+colorLists.value.splice(index, 1);
+SaveisDisabled.value = false
+ if(colorLists.value.length != 5 ) {
+    AddisDisabled.value = true
+    SaveToProfileDisabled.value = false
+  } 
 }
 
 //กดเซฟหลังจาก edit --> เลือกสีใหม่
@@ -61,6 +77,18 @@ const saveColorList = () => {
   color.value = " "   //เปลี่ยนสีที่โชว์ให้เป็นสีดำ เพื่อให้ยูสเชอร์เข้าใจว่าเปลี่ยแล้ว
   AddisDisabled.value = true  //หลังจากเซฟเสร็จ ก็เปิดปุ่ม add ให้แสดง
   SaveisDisabled.value = false //หลังจากเซฟเสร็จ ก็ซ่อนปุ่มเซฟ
+  if(colorLists.value.length == 5) {
+    AddisDisabled.value = false
+    CheckForUpdateToProfile()
+  }
+}
+
+
+const CheckForUpdateToProfile = () => {
+  if(colorLists.value.length == 5) {
+    AddisDisabled.value = false
+    SaveToProfileDisabled.value = true
+  }
 }
 
 const savetoProfile = async (newSaveColor) => {
@@ -101,7 +129,7 @@ const savetoProfile = async (newSaveColor) => {
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="saveColorList" v-if="SaveisDisabled">update</button>
-          <SavetoProfile :savedColorList="colorLists" @savedColor="savetoProfile" /> 
+          <SavetoProfile :savedColorList="colorLists" @savedColor="savetoProfile" v-if="SaveToProfileDisabled"/> 
       </div>
 
       <!-- <div class="hr-outside">
