@@ -17,21 +17,20 @@ onBeforeMount(async () => {
 
 //delete data
 const removeColorSave = async (removeSaveColorId) => {
-  const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
-    method: 'DELETE'
-  })
-  if (res.status === 200) {
-    showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
-    console.log('deleted');
-  }
-  else console.log('error,cannot delete');
+    const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
+        method: 'DELETE'
+    })
+    if (res.status === 200) {
+        showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
+        console.log('deleted');
+    }
+    else console.log('error,cannot delete');
 }
 </script>
  
 <template>
     <div>
         <div class="text-center dark:text-white">
-            <p class="text-2xl ">Your Color Palettes</p>
             <div class="grid grid-cols-3 gap-6">
                 <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
                     v-for="(showSaveColor, index1) in showSaveColors" :key="index1">
@@ -58,5 +57,4 @@ const removeColorSave = async (removeSaveColorId) => {
 </template>
  
 <style>
-
 </style>
