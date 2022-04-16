@@ -13,6 +13,7 @@ This project is a part of INT203 Client-side Web Programming II Term 2 year of e
 | 5.  | 63130500100 | Rawis Noiwong        |
 
 ### ABOUT THE PROJECT
+COLORS is a web that you can explore trending color and generate your color ! 
 #### ABOUT WEBSITE:
 1. Home page
 
