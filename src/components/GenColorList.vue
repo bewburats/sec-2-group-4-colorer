@@ -112,7 +112,7 @@ const savetoProfile = async (newSaveColor) => {
         <br>
         <div class="flex flex-row gap-2 font-medium mt-0 mb-5 dark:text-white">
           <input id="inputColor" type="color" v-model="color" />
-          <input type="text"  v-model="color" placeholder="input color" />
+          <input type="text" class="dark:text-black" v-model="color" placeholder="input color" />
         </div>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"

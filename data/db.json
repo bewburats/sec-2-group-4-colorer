@@ -47,6 +47,18 @@
     {
       "id": 12,
       "colorPalettes": ["#006d77", "#83c5be", "#edf6f9", "#ffddd2", "#e29578"]
+    },
+    {
+      "id": 13,
+      "colorPalettes": ["#cb997e", "#ddbea9", "#ffe8d6", "#b7b7a4", "#a5a58d"]
+    },
+    {
+      "id": 14,
+      "colorPalettes": ["#d8e2dc", "#ffe5d9", "#ffcad4", "#f4acb7", "#9d8189"]
+    },
+    {
+      "id": 15,
+      "colorPalettes": ["#e63946", "#f1faee", "#a8dadc", "#457b9d", "#1d3557"]
     }
   ],
   "savedColors": []
