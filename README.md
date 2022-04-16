@@ -50,3 +50,6 @@ COLORS is a web that you can explore trending color and generate your color !
 9. You can delete your palette
 
 ![DELETEPALETTE](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/deleteprofile.png?raw=true)
+
+#### FOR REFERENCE WEBSITE:
+- ![Coolors](https://coolors.co/)
