@@ -1,9 +1,8 @@
 <script setup>
 import DeleteFromProfile from '../components/DeleteFromProfile.vue';
 import { onBeforeMount, ref } from "vue";
-import { useRouter } from "vue-router";
-const router = useRouter();
 
+const isShow = ref(true);
 const showSaveColors = ref([]);
 //get Data
 const getSaveColors = async () => {
@@ -20,14 +19,24 @@ onBeforeMount(async () => {
 })
 //delete data
 const removeColorSave = async (removeSaveColorId) => {
-    const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
-        method: 'DELETE'
-    })
-    if (res.status === 200) {
-        showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
-        console.log('deleted');
+    if (confirm('Do you want to delete ?')) {
+        const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
+            method: 'DELETE'
+        })
+        if (res.status === 200) {
+            showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
+            console.log('deleted');
+        }
+        else console.log('error,cannot delete');
     }
-    else console.log('error,cannot delete');
+}
+const checkshowSaveColors = ()=>{
+if (showSaveColors.value.length <= 0) {
+    isShow.value = true
+}else{
+    isShow.value = false
+}
+return isShow.value
 }
 </script>
 
@@ -50,6 +59,9 @@ const removeColorSave = async (removeSaveColorId) => {
                 <DeleteFromProfile :colorUserList="showSaveColor" @deleteColor="removeColorSave" />
             </div>
         </div>
+    </div>
+    <div v-if="checkshowSaveColors()" class="text-gray-300 text-center text-xl dark:text-gray-500">
+        No saved color
     </div>
 </template>
 

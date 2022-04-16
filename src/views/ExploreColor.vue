@@ -7,8 +7,8 @@ const getColors = async () => {
   const res = await fetch("http://localhost:5000/colors"); //มี await ต้องเปลี่ยนฟังก์ชั่นให้เป็น async
   if (res.status === 200) {
     colors.value = await res.json(); //json() getdata + covert to Js Obj.
-    console.log(colors.value);
-  } else console.log("not get colors");
+    // console.log(colors.value);
+}
 };
 onBeforeMount(async () => {
   await getColors();
