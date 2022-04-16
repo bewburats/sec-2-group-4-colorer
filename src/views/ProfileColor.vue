@@ -10,7 +10,7 @@ const getSaveColors = async () => {
     const res = await fetch('http://localhost:5000/savedColors')
     if (res.status === 200) {
         showSaveColors.value = await res.json()
-        console.log(showSaveColors.value)
+        // console.log(showSaveColors.value)
     } else {
         console.log("not get saveColors")
     }
@@ -47,7 +47,7 @@ const removeColorSave = async (removeSaveColorId) => {
                         </div>
                     </div>
                 </div>
-                <DeleteFromProfile :colorUserList="showSaveColors" @deleteColor="removeColorSave"/>
+                <DeleteFromProfile :colorUserList="showSaveColor" @deleteColor="removeColorSave" />
             </div>
         </div>
     </div>

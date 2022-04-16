@@ -3,16 +3,15 @@ import { onBeforeMount, ref } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import SavetoProfile from "./SavetoProfile.vue";
 const route = useRoute();
-
 const colorLists = ref([]);
 
 const getColorFromDb = async (colorId) => {
   const res = await fetch(`http://localhost:5000/colors/${colorId}`);
   if (res.status === 200) {
     let data = await res.json();
-    console.log(data);
+    // console.log(data);
     colorLists.value = data.colorPalettes;
-    console.log(colorLists.value);
+    // console.log(colorLists.value);
   } else {
     console.log("not get colorList");
   }
@@ -27,13 +26,10 @@ onBeforeMount(async () => {
 });
 
 const color = ref("#000000");  //สีเริ่มต้นที่โชว์ให้ยูสเชอร์เห็น
-
 const AddisDisabled = ref(true)  //การแสดงผลของปุ่ม add
 const SaveisDisabled = ref(false) //การแสดงผลของปุ่ม save
 const SaveToProfileDisabled = ref(false)
 const currentColor = ref(0); //เอาไว้เซฟตำแหน่งที่เลือก edit 
-
-
 
 //add และ edit  โดยในปุ่ม add จะส่ง index=7 ส่วน editจะส่ง index= 1-6 (เรากำหนดไม่ให้มีสีเกิน6อันในพาเหลด)
 const addColorToList = (index) => {
@@ -41,7 +37,7 @@ const addColorToList = (index) => {
   //เช็คว่าถ้าอันเลย์นั้นไม่เต็ม 6 และ กดปุ่มadd มาก็จะเพิ่มปกติ
   if (colorLists.value.length < 5 && index == 7) {
     colorLists.value.push(color.value)
-    console.log(colorLists.value)
+    // console.log(colorLists.value)
  
     CheckForUpdateToProfile()
   
@@ -96,9 +92,9 @@ const savetoProfile = async (newSaveColor) => {
     })
     if (res.status === 201) {
         const savedPalette = await res.json()
-         console.log(savedPalette);
-        console.log(savedPalette);
-        console.log(colorLists.value);
+        //  console.log(savedPalette);
+        // console.log(savedPalette);
+        // console.log(colorLists.value);
         console.log('saved successfully')
     } else { console.log(`cannot save`); }
 } 
