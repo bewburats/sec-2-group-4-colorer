@@ -120,7 +120,7 @@ function checkIsPlayedToday() {
       console.log('not played');
       isPlayedToday.value = false;
     } else {
-      console.log('played');
+      // console.log('played');
       isPlayedToday.value = true;
       let lastPlayStatus = JSON.parse(localStorage.getItem('lastplayStatus')) || false;
       // if true = you correct in last play
