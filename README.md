@@ -18,7 +18,7 @@ This project is a part of INT203 Client-side Web Programming II Term 2 year of e
 
 ![HOME](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/home.png?raw=true)
 
-2. Generate your colors
+2. You can generate your own palette
 
 ![GEN](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/genhome.png?raw=true)
 
@@ -26,7 +26,7 @@ This project is a part of INT203 Client-side Web Programming II Term 2 year of e
 
 ![COLOR](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/color.png?raw=true)
 
-4. You can edit/delete/save your color
+4. Edit/delete/save your color
 
 ![MANAGE](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/generate.png?raw=true)
 
