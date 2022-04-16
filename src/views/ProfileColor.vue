@@ -1,6 +1,6 @@
 <script setup>
 import DeleteFromProfile from '../components/DeleteFromProfile.vue';
-import { onBeforeMount, ref , onBeforeUpdate } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -18,36 +18,39 @@ const getSaveColors = async () => {
 onBeforeMount(async () => {
     await getSaveColors()
 })
-
-
-
-
+//delete data
+const removeColorSave = async (removeSaveColorId) => {
+    const res = await fetch(`http://localhost:5000/savedColors/${removeSaveColorId}`, {
+        method: 'DELETE'
+    })
+    if (res.status === 200) {
+        showSaveColors.value = showSaveColors.value.filter((showSaveColor) => showSaveColor.id !== removeSaveColorId)
+        console.log('deleted');
+    }
+    else console.log('error,cannot delete');
+}
 </script>
 
 <template>
     <div class="text-center dark:text-white">
-            <div class="grid grid-cols-3 gap-6">
-                <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-                    v-for="(showSaveColor, index1) in showSaveColors" :key="index1">
-
-                    <div class="grid grid-cols-5 py-8">
-                        <div v-for="(showSavePalette, index2) in showSaveColor.savedPalettes" :key="index2">
-
-
-                            <div class="inline py-8 text-xs rounded-lg hover:text-white"
-                                v-bind:style="{ 'background-color': `${showSavePalette}` }">
-                                {{ showSavePalette.toUpperCase() }}
-                            </div>
-                        
+        <h1 class="text-center text-xl dark:text-white font-semibold">Your Color Palettes</h1>
+        <p>Palettes Color that you save in generate!</p>
+        <br>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                v-for="(showSaveColor, index1) in showSaveColors" :key="index1">
+                <div class="grid grid-cols-5 py-8">
+                    <div v-for="(showSavePalette, index2) in showSaveColor.savedPalettes" :key="index2">
+                        <div class="inline py-8 text-xs rounded-lg hover:text-white"
+                            v-bind:style="{ 'background-color': `${showSavePalette}` }">
+                            {{ showSavePalette.toUpperCase() }}
                         </div>
                     </div>
-                    <!-- น่าจะต้องสร้าง component ใหม่มั่ง  -->
-                    <DeleteFromProfile  :idColorUser = "showSaveColor.id" @click="getSaveColors()" />
-                        
-                   
                 </div>
+                <DeleteFromProfile :colorUserList="showSaveColors" @deleteColor="removeColorSave"/>
             </div>
         </div>
+    </div>
 </template>
 
 <style>

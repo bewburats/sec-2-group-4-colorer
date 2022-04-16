@@ -1,9 +1,8 @@
 <script setup>
-import { onBeforeMount, ref , onBeforeUpdate} from "@vue/runtime-core";
+import { onBeforeMount, ref } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import SavetoProfile from "./SavetoProfile.vue";
 const route = useRoute();
-
 
 const colorLists = ref([]);
 
@@ -55,9 +54,6 @@ const addColorToList = (index) => {
     SaveisDisabled.value = true  //แสดงปุ่ม save เมื่อกด edit
     SaveToProfileDisabled.value = false
   }
-
-  
-
 }
 
 //ลบสีออกจาก list 
@@ -74,7 +70,7 @@ SaveisDisabled.value = false
 //กดเซฟหลังจาก edit --> เลือกสีใหม่
 const saveColorList = () => {
   colorLists.value[currentColor.value] = color.value //แก้ไขอันเลย์
-  color.value = " "   //เปลี่ยนสีที่โชว์ให้เป็นสีดำ เพื่อให้ยูสเชอร์เข้าใจว่าเปลี่ยแล้ว
+  color.value = "#000000"   //เปลี่ยนสีที่โชว์ให้เป็นสีดำ เพื่อให้ยูสเชอร์เข้าใจว่าเปลี่ยแล้ว
   AddisDisabled.value = true  //หลังจากเซฟเสร็จ ก็เปิดปุ่ม add ให้แสดง
   SaveisDisabled.value = false //หลังจากเซฟเสร็จ ก็ซ่อนปุ่มเซฟ
   if(colorLists.value.length == 5) {
@@ -82,7 +78,6 @@ const saveColorList = () => {
     CheckForUpdateToProfile()
   }
 }
-
 
 const CheckForUpdateToProfile = () => {
   if(colorLists.value.length == 5) {
@@ -120,21 +115,17 @@ const savetoProfile = async (newSaveColor) => {
         
         <br>
         <div class="flex flex-row gap-2 font-medium mt-0 mb-5 dark:text-white">
-          <input id="inputColor" class="" type="color" v-model="color" />
+          <input id="inputColor" type="color" v-model="color" />
           <input type="text"  v-model="color" placeholder="input color" />
         </div>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
-          @click="addColorToList(7)" v-if="AddisDisabled" :disabled="disAdd">add</button>
+          @click="addColorToList(7)" v-if="AddisDisabled" >add</button>
         <button
           class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2"
           @click="saveColorList" v-if="SaveisDisabled">update</button>
           <SavetoProfile :savedColorList="colorLists" @savedColor="savetoProfile" v-if="SaveToProfileDisabled"/> 
       </div>
-
-      <!-- <div class="hr-outside">
-        <div class="hr-inside"></div>
-      </div> -->
       <div class="grid grid-cols-3 gap-1">
         <div v-for="(color, index) in colorLists" :key="index">
           <div>

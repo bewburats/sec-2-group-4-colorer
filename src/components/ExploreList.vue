@@ -19,18 +19,18 @@ const addGenColor = (colorExploreId) => {
   <div class="grid grid-cols-3 gap-6">
     <div
       class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-      v-for="(colorExplore, index) in exploreList"
-      :key="index"
+      v-for="(colorExplore, index1) in exploreList"
+      :key="index1"
     >
       <div class="grid grid-cols-5 py-8">
         <div
-          v-for="(colorPalette, index) in colorExplore.colorPalettes"
-          :key="index"
+          v-for="(colorPalette, index2) in colorExplore.colorPalettes"
+          :key="index2"
         >
           <div
             class="inline py-8 text-xs rounded-lg hover:text-white"
             v-bind:style="{
-              'background-color': `${colorExplore.colorPalettes[index]}`,
+              'background-color': `${colorExplore.colorPalettes[index2]}`,
             }"
           >
             {{ colorPalette.toUpperCase() }}
