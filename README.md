@@ -42,7 +42,7 @@ This project is a part of INT203 Client-side Web Programming II Term 2 year of e
 
 ![GAME](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/gamehome.png?raw=true)
 
-8. Palettes Color that you save in generate
+8. Palettes color that you save in generate
 
 ![PROFILE](https://github.com/bewburats/sec-2-group-4-colorer/blob/main/images/profilehome.png?raw=true)
 
